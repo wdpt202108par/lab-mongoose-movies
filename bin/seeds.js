@@ -1,26 +1,35 @@
-const celebrity = [
+const mongoose = require('mongoose');
+const Celebrity = require('../models/celebrity.js');
+mongoose.connect ('mongodb://localhost/lab-mongoose-movies')
+.then(function (){
+    console.log('connected to mongodb');
+    mongoose.connection.close()
+})
+.catch (err => {
+    console.log ('Error! connection to mongodb');
+})
+
+const celebrities = [
     {
         name: "Tom Cruise",
         occupation : "actor",
         catchParse : "Top gun"
+    },
+    {
+        name: "Oprah",
+        occupation : "comedian",
+        catchParse : "Hello"
+    },
+    {
+        name: "Beyonce",
+        occupation : "singer",
+        catchParse : "Halo"
     }
 ];
 
-const mongoose = require('mongoose');
-const Celebrity = require('../models/celebrity.js');
-
-Celebrity.create(celebrity)
-
-.then( function(){
-    console.log('connecté 😃')
-    mongoose.connection.close()
+Celebrity.create(celebrities)
+.then(function(){
+    console.log('created 😃')
 })
 .catch(err => {
     console.log(`ERROR`)});
-
-    Celebrity.create(celebrity)
-    .then(celebrityFromDB => {
-        console.log(`Celebrity CREES ${celebrityFromDB.length}`);
-        mongoose.connection.close();
-    })
-    .catch(err => console.log(`An error occurred while creating a celebrity files`));
