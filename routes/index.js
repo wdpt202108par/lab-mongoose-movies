@@ -20,4 +20,17 @@ router.get('/celebrities', (req, res, next) =>{
   })
 })
 
+/* GET celebrities id page */
+//iteration 3
+router.get('/celebrities/:id', (req, res, next)=> {
+  Celebrity.findById(req.params.id)
+  .then(function (celebrityList){
+    res.render('celebrities/show', {myCeleb:celebrityList
+    });
+  })
+  .catch(function (err){
+    console.log(`Error! ID celebrity page  not found🥵!`)
+  })
+})
+
 module.exports = router;

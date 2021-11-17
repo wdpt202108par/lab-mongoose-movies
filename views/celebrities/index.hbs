@@ -1,10 +1,13 @@
 <h2> Ironhack celebrities</h2>
 
-calling the celebrity's name NOT WORKING! 🥲
+calling the celebrity's name and page per id  NOT WORKING! 🥲
 <ul>
     {{#each myCeleb}}
     <li>
         <p>{{this.name}}</p>
+        <a href="celebrities/{{this.id}}">Go to check the celebrities by ID</a>
+
     </li>
     {{/each}}
+
 </ul>
