@@ -1,9 +1,10 @@
 const mongoose = require('mongoose');
-const Celebrity = require('../models/celebrity.js');
+const Celebrity = require('../models/celebrity');
+
+//connection for the mongoose && promises 
 mongoose.connect ('mongodb://localhost/lab-mongoose-movies')
 .then(function (){
     console.log('connected to mongodb');
-    mongoose.connection.close()
 })
 .catch (err => {
     console.log ('Error! connection to mongodb');
@@ -25,11 +26,16 @@ const celebrities = [
         occupation : "singer",
         catchParse : "Halo"
     }
-];
+]
 
+//created  the celebrityDB
+///////////////// below function is working????
 Celebrity.create(celebrities)
-.then(function(){
-    console.log('created 😃')
+    .then(function(celebrityDB){
+    console.log(`${celebrityDB.length} have been created 😃`);
+    mongoose.connection.close()
 })
-.catch(err => {
-    console.log(`ERROR`)});
+    .catch(err => {
+    console.log('Error! during the creation of the celebrityDB');
+});
+

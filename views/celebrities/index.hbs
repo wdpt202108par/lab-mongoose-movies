@@ -1,3 +1,10 @@
-<h2>{{title}}</h2>
-<p>This is the celebrity index.hbs {{title}}</p>
-Use a forEach loop to display tags with each celebrity's name.
+<h2> Ironhack celebrities</h2>
+
+calling the celebrity's name NOT WORKING! 🥲
+<ul>
+    {{#each myCeleb}}
+    <li>
+        <p>{{this.name}}</p>
+    </li>
+    {{/each}}
+</ul>

@@ -1,6 +1,6 @@
 const express = require('express');
 const router  = express.Router();
-const celebrity = require('../models/celebrity');
+const Celebrity = require('../models/celebrity');
 
 /* GET home page */
 router.get('/', (req, res, next) => {
@@ -10,13 +10,13 @@ router.get('/', (req, res, next) => {
 /* GET celebrities page */
 //iteration 2 
 router.get('/celebrities', (req, res, next) =>{
-  celebrity.find()
+  Celebrity.find()
   .then(function (celebrityDB){
-    res.render('celebrities/index', {myCeleb : celebrityDB});
-    console.log('Connected to the port 3000');
+    res.render('celebrities/index', {myCeleb: celebrityDB});
+    console.log('Connected to the port 3000😎');
   })
   .catch(function (err){
-    console.log('Error! Durint open the celebrtiy page');
+    console.log('Error! During open the celebrtiy page');
   })
 })
 
