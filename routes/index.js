@@ -24,3 +24,19 @@ router.get('/celebrities', (req, res, next) => {
   });
 });
 
+
+router.get('/celebrities/:_id', (req, res, next) =>{
+  Celebrity
+
+  .findById(req.params._id)
+  .then(celebrityFromDB => {
+    res.render('celebrities/show', celebrityFromDB) //{name:totot,, occupation: titi}
+  })
+
+  .catch(error => {
+    console.log('Error while getting the celebrities from the DB:', error);
+
+    next(error);
+  })
+  
+})
