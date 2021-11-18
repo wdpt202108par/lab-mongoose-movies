@@ -1,10 +1,7 @@
 
-<h2>
-    {{#each celebritiesFromDB }}
-        <a href="/celebrities/{{id}}">{{name}}</a>
-    {{/each}}
-</h2>
+<h2>celebrities</h2>
 
-    
-   
+{{#each celebrities }}
+<a href="/celebrities/{{id}}">{{name}}</a>
+{{/each}}
         

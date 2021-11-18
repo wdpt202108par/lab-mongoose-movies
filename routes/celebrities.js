@@ -6,6 +6,7 @@ const router = express.Router();
 router.get("/celebrities", function (req, res, next) {
   Celebrity.find()
     .then(function (celebritiesFromDB) {
+        console.log('salut', celebritiesFromDB)
       res.render("celebrities/index", {
         celebrities: celebritiesFromDB, // [ {title: ...}, {}, ... ]
       });
@@ -92,6 +93,6 @@ router.get("/books/:bookid", function (req, res, next) {
       });
     })
     .catch((err) => console.log(err));
-});
+});*/
 
-module.exports = router; // require('../book.routes.js)*/
+module.exports = router; // require('../book.routes.js)
