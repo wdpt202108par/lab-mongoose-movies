@@ -7,3 +7,18 @@ router.get('/', (req, res, next) => {
 });
 
 module.exports = router;
+ 
+route.get('/celebrity', (req, res, next) => {
+  Celebrity.find()
+  .then(allTheCelebrityrFromDB) =>{
+    console.log("retrieved celebrities from DB:", allTheCelebrityrFromDB);
+    res.render('celebrity',{celebrity:allTheCelebrityrFromDB});
+  
+})
+
+.catch(error => {
+  console.log('Error whiel getting the celebrities from the DB:', error);
+  
+  next(error);
+})
+
