@@ -10,7 +10,7 @@ const celebritySchema = new Schema(
     timestamps: true
   }
 );
- const Celebrity = model("Celebrity", schema)
+ const Celebrity = model("Celebrity", celebritySchema)
 
  module.exports = Celebrity;
 

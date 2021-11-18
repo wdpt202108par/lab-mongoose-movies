@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
-const celebrity = require('../models/celebrity.model');
+const Celebrity = require('../model/Celebrity');
  
-const MONGO_URI = process.env.MONGODB_URI || 'mongodb://localhost/lab-mongoose-movies';
+const MONGO_URI = process.env.MONGODB_URI || 'mongodb://localhost/mongoose-movies';
  
 mongoose.connect(MONGO_URI, {
   useNewUrlParser: true,
@@ -28,11 +28,11 @@ const initialCelebrity = [
     },
 ];
 
-    celebrity.create(celebrities)
-  .then(celebritiesFromDB => {
-    console.log(`Created ${celebritiesFromDB.length} celebrities`);
+    Celebrity.create(initialCelebrity)
+  .then(initialCelebrityFromDB => {
+    console.log(`Created ${initialCelebrityFromDB.length} initialCelebrity`);
  
     // Once created, close the DB connection
-    mongoose.connection.close();
+   // mongoose.connection.close();
   })
   .catch(err => console.log(`An error occurred while creating a feedback from the DB: ${err}`));
