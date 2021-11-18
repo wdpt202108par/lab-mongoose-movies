@@ -59,5 +59,21 @@ router.get("/celebrities/:celebrityId", function(req, res, next) {
 });
 
 
+router.post("/celebrities/:id/delete", function(req, res, next) {
+    console.log("req.body=", req.body);
+
+    Celebrity.findByIdAndRemove(req.params.celebrityId)
+        .then(function(createdCelebrity) {
+            // celeb a été créé
+            res.redirect("/celebrities"); // reponse
+        })
+        .catch((err) => {
+            console.log(err);
+            next(err)
+                //res.redirect("/celebrities/new");;
+
+        })
+})
+
 
 module.exports = router; // require('../book.routes.js)
