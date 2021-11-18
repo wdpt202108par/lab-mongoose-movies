@@ -29,7 +29,6 @@ const celebrities = [
 ]
 
 //created  the celebrityDB
-///////////////// below function is working????
 Celebrity.create(celebrities)
     .then(function(celebrityDB){
     console.log(`${celebrityDB.length} have been created 😃`);
