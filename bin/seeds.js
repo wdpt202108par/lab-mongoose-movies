@@ -33,6 +33,6 @@ const initialCelebrity = [
     console.log(`Created ${initialCelebrityFromDB.length} initialCelebrity`);
  
     // Once created, close the DB connection
-   // mongoose.connection.close();
+    mongoose.connection.close();
   })
   .catch(err => console.log(`An error occurred while creating a feedback from the DB: ${err}`));

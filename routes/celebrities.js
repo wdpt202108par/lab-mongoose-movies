@@ -5,9 +5,9 @@ const router = express.Router();
 // LISTING des celebs
 router.get("/celebrities", function (req, res, next) {
   Celebrity.find()
-    .then(function (initialCelebrityFromDB) {
-      res.render("initialCelebrity-list", {
-        mybooks: booksFromDb, // [ {title: ...}, {}, ... ]
+    .then(function (celebritiesFromDB) {
+      res.render("celebrities/index", {
+        celebrities: celebritiesFromDB, // [ {title: ...}, {}, ... ]
       });
     })
     .catch(function (err) {
