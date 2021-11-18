@@ -1,5 +1,6 @@
 const express = require('express');
 const router  = express.Router();
+const Celebrity = require('../models/Celebrity.model')
 
 /* GET home page */
 router.get('/', (req, res, next) => {
@@ -8,17 +9,18 @@ router.get('/', (req, res, next) => {
 
 module.exports = router;
  
-route.get('/celebrity', (req, res, next) => {
+router.get('/celebrities', (req, res, next) => {
   Celebrity.find()
-  .then(allTheCelebrityrFromDB) =>{
-    console.log("retrieved celebrities from DB:", allTheCelebrityrFromDB);
-    res.render('celebrity',{celebrity:allTheCelebrityrFromDB});
+  .then(allTheCelebritiesFromDB => {
+    console.log('Retrieved celebritiers from DB:', allTheCelebritiesFromDB);
+    res.render('celebrities/index',{ celebrity: allTheCelebritiesFromDB });
   
-})
+  })
 
-.catch(error => {
-  console.log('Error whiel getting the celebrities from the DB:', error);
+  .catch(error => {
+    console.log('Error while getting the celebrities from the DB:', error);
   
-  next(error);
-})
+    next(error);
+  });
+});
 
