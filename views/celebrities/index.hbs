@@ -5,7 +5,15 @@
     <li>
         <p>{{this.name}}</p>
         <a href="celebrities/{{this.id}}">Go to check the celebrities by ID</a>
-
+    
+        <form action="/celebrities/{{this.id}}/delete" method="POST">
+            <label>
+                id:
+                <input type="text" name="id" />
+            </label>
+            
+            <button>delete ID</button>
+        </form>
     </li>
     {{/each}}
 
