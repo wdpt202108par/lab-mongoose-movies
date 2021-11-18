@@ -1,0 +1,17 @@
+<h2>Celebrities' Page</h2>
+{{#each mycelebrities}}
+<ul>
+    <li>
+        {{this.name}}
+        <a href="/celebrities/{{this._id}}">View more</a>
+        <form action="/celebrities/{{this._id}}/delete" method="POST">
+            <button>Delete</button>
+        </form>
+    </li>
+</ul>
+
+
+{{/each}}
+
+
+    
