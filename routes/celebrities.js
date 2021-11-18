@@ -3,19 +3,36 @@ const Celebrity = require('../model/Celebrity');
 const router = express.Router();
 
 // LISTING des celebs
-router.get("/celebrities", function (req, res, next) {
-  Celebrity.find()
-    .then(function (celebritiesFromDB) {
-        console.log('salut', celebritiesFromDB)
-      res.render("celebrities/index", {
-        celebrities: celebritiesFromDB, // [ {title: ...}, {}, ... ]
-      });
-    })
-    .catch(function (err) {
-      console.log(err);
-      next(err); // reponse
-    });
+router.get("/celebrities", function(req, res, next) {
+    Celebrity.find()
+        .then(function(celebritiesFromDB) {
+            console.log('salut', celebritiesFromDB)
+            res.render("celebrities/index", {
+                celebrities: celebritiesFromDB, // [ {title: ...}, {}, ... ]
+            });
+        })
+        .catch(function(err) {
+            console.log(err);
+            next(err); // reponse
+        });
 });
+
+
+router.get("/celebrities/:celebrityId", function(req, res, next) {
+    Celebrity.findById(req.params.celebrityId)
+        .then(function(celebrityFromDB) {
+            console.log('render show', celebrityFromDB)
+            res.render("celebrities/show", {
+                celebrity: celebrityFromDB, // [ {title: ...}, {}, ... ]
+            });
+        })
+        .catch(function(err) {
+            console.log(err);
+            next(err); // reponse
+        });
+
+});
+
 
 /*router.get("/books/:bookid/delete", function (req, res, next) {
   Book.findByIdAndDelete(req.params.bookid)
