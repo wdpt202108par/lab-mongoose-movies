@@ -12,7 +12,6 @@ router.get('/', (req, res, next) => {
 router.get('/celebrities', (req, res, next) =>{
   Celebrity.find()
   .then(function (celebrityDB){
-    console.log("New error ", celebrityDB);
     res.render('celebrities/index', {myCeleb: celebrityDB});
     console.log('Connected to the port 3000😎');
   })

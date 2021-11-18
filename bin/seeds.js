@@ -14,17 +14,17 @@ const celebrities = [
     {
         name: "Tom Cruise",
         occupation : "actor",
-        catchParse : "Top gun"
+        catchPhrase : "Top gun"
     },
     {
         name: "Oprah",
         occupation : "comedian",
-        catchParse : "Hello"
+        catchPhrase : "Hello"
     },
     {
         name: "Beyonce",
         occupation : "singer",
-        catchParse : "Halo"
+        catchPhrase : "Halo"
     }
 ]
 
