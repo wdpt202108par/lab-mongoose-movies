@@ -40,3 +40,23 @@ router.get('/celebrities/:_id', (req, res, next) =>{
   })
   
 })
+
+router.get("/celebrities/new", req, res, netx => {
+  res.render("/celebrities/new");
+})
+
+router.post("celebrities", req, res, next => {
+  let newCeleb = Celebrity({
+    name: req.body.name,
+    occupation: req.body.occupation,
+    catchPhrase: req.body.catchPhrase
+  })
+  
+newCeleb
+.save()
+.then(celeb => res.redirect("/celebrities"))
+.catch(error => res.render("celebrities/new"))
+
+})
+
+
