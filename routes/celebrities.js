@@ -16,14 +16,13 @@ router.get('/celebrities', (req, res, next) => {
     });
 });
 
-//ITERATION 4
+//ITERATION 4 : NEW CREATE
 router.get("/celebrities/new", function (req, res) {
     res.render ("celebrities/new", {});
  });
  
  
  router.post("/celebrities/new", function (req, res, next) { 
- 
     Celebrity.create({
      name: req.body.name,
      occupation: req.body.occupation,
@@ -38,7 +37,40 @@ router.get("/celebrities/new", function (req, res) {
      });
  });
 
- //ITERATION3
+ //ITERATION 6 : EDIT
+ router.get("/celebrities/:celebrityid/edit", function (req, res, next) {
+  Celebrity.findById(req.params.celebrityid)
+  .then(function (foundCelebrity) {
+      res.render("celebrities/edit", {
+        celebrity: foundCelebrity,
+      });
+  })
+  .catch(function (err) {
+      console.log(err);
+      next(err); 
+  });
+});
+
+router.post("/celebrities/:celebrityid", function (req, res, next) { 
+  Celebrity.findByIdAndUpdate(
+    req.params.celebrityid,
+    {
+    name: req.body.name,
+    occupation: req.body.occupation,
+    catchPhrase: req.body.catchPhrase
+    },
+    { new: true }
+  )
+   .then(function (updatedCelebrity) {
+    res.redirect("/celebrities");
+  })
+   .catch((err) => {
+     console.log(err);
+     next(err); 
+   });
+});
+
+ //ITERATION 3 : DETAILS
 router.get("/celebrities/:celebrityid", function (req, res, next) {
     Celebrity.findById(req.params.celebrityid)
     .then(function (foundCelebrity) {
@@ -52,7 +84,7 @@ router.get("/celebrities/:celebrityid", function (req, res, next) {
     });
 });
 
- //ITERATION3
+ //ITERATION 5 : DELETE
  router.post("/celebrities/:celebrityid/delete", function (req, res, next) {
     Celebrity.findByIdAndDelete(req.params.celebrityid)
     .then(function () {
@@ -63,6 +95,5 @@ router.get("/celebrities/:celebrityid", function (req, res, next) {
         next(err); 
     });
  });
-
 
 module.exports = router;
