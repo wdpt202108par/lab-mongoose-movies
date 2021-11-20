@@ -69,7 +69,7 @@ router.post("/celebrities/:id/delete", function (req, res, next) {
     });
 });
 
-/* GET Deleting celebrities page */
+/* GET  adding new movies page */
 //iteration 8
 router.get('/movies/new', (req, res, next)=>{
   Movie.find()
@@ -92,7 +92,7 @@ router.post('/movies', function (req, res, next){
     cast,
   }).save()
   .then(function (newMovie){
-  res.redirect('/movies');
+    res.redirect("/celebrities");
   })
   .catch(err => {
     console.log(`Error! during creation of movies 😱`);
@@ -101,8 +101,18 @@ router.post('/movies', function (req, res, next){
 })
 
 
-
-
+/* GET listing our movies */
+//iteration 9
+router.get("/movies", (req, res, next) => {
+  Movie.find()
+    .then(function (movieDB) {
+      res.render("movies/index", { allMovie: movieDB });
+    })
+    .catch(function (err) {
+      console.log("Error! During open the celebrtiy page");
+      next(err);
+    });
+});
 
 
 

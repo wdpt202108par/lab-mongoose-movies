@@ -25,5 +25,14 @@
     </select>
     </label>
     
-    <button>Create😎</button>
+<label>
+        Cast myCeleb:
+        <select name= "celebrity" multiple>
+        {{#each myCeleb}}
+        <option value= "{{this.id}}">{{this.name}}</option>
+        {{/each}}
+    </select>
+    </label>
+
+    <button>create</button>
 </form>
