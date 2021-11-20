@@ -69,34 +69,6 @@ router.post("/celebrities/:id/delete", function (req, res, next) {
     });
 });
 
-/* GET  adding new movies page */
-//iteration 8
-//promise all
-router.get('/movies/new', (req, res, next)=>{
-  /*
-  const movies = Movies.find
-  const celebs = Celebrity.find
-
-  Promise.all([movies, celebs])
-    .then(values => {
-      console.log(values) // {moives: [{}, {}], celebs: [{}, {}]}
-      res.render(mypage, {data: values})
-    })
-  */
-  // we should put celebrity() inside the movie()
-    Movie.find()
-  .then(function (movieList){
-    Celebrity.find()
-      .then(celebritiesFromDB => {
-        res.render('movies/new', {myMovie : movieList, myCeleb: celebritiesFromDB});
-      })
-      .catch(err => {next(err)})
-  })
-  .catch(function (err){
-    console.log(`Error! Movie new page not found 🥲`);
-    next (err);
-  });
-});
 
 router.post('/movies', function (req, res, next){
   const {title, genre, plot, cast} = req.body;
@@ -129,9 +101,20 @@ router.get("/movies", (req, res, next) => {
     });
 });
 
-/* POST The movie details page */
+/* GET The movie details page */
 //iteration 10
-//router.get('/movies')
+router.get('/movies/:id',(req, res, next) => {
+  Movie.findById(req.params.id)
+  .populate('Movie')
+  .then(function (movieDB){
+//    console.log('what is moviedb======>',movieDB );
+    res.render('movies/show' , {moviesId : movieDB});
+  })
+  .catch(function (err){
+    console.log(`Error! serach Movies by ID not found 😨`);
+    next(err);
+  });
+});
 
 
 
