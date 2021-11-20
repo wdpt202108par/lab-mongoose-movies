@@ -1,6 +1,7 @@
 const express = require('express');
 const router  = express.Router();
 const Celebrity = require('../models/Celebrity.model.js')
+const Movie = require("../models/Movie.model.js")
 
 /* GET home page */
 router.get('/', (req, res, next) => {
@@ -46,7 +47,6 @@ router.get('/celebrities/:_id', (req, res, next) =>{
 })
 
 
-
 router.post("celebrities", (req, res, next) => {
   let newCeleb = Celebrity({
     name: req.body.name,
@@ -62,3 +62,19 @@ newCeleb
 })
 
 
+// Créer la route Movie
+
+router.get('/movies', (req, res, next) => {
+  Movie.find()
+  .then(allTheMoviesFromDB => {
+    console.log('Retrieved celebritiers from DB:', allTheMoviesFromDB);
+    res.render('movies/index',{ celebrity: allTheMoviesFromDB });
+  
+  })
+
+  .catch(error => {
+    console.log('Error while getting the movies from the DB:', error);
+  
+    next(error);
+  });
+});
