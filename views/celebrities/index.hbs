@@ -1,0 +1,16 @@
+<h2> Ironhack celebrities</h2>
+
+<ul>
+    {{#each myCeleb}}
+    <li>
+        <p>{{this.name}}</p>
+        <form action="/celebrities/{{this.id}}" method="GET">
+            <button>Check celebrities by ID</button>
+        </form>
+        <form action="/celebrities/{{this.id}}/delete" method="POST">
+            <button>delete ID</button>
+        </form>
+    </li>
+    {{/each}}
+
+</ul>

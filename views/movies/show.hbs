@@ -1,0 +1,14 @@
+<h2> Movies find by id </h2>
+
+<ul>
+    {{#each moviesId}}
+    <p>{{this.title}}</p>
+    <p>{{this.plot}}</p>
+    <p>{{this.genre}}</p>
+    {{#each myMovie}}
+    <option value= "{{this._id}}">{{this.name}}</option>
+        {{/each}}
+    {{/each}}
+
+</ul>
+
