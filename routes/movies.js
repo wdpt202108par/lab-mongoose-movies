@@ -52,7 +52,7 @@ router.post("/movies/new", function(req, res, next) {
 });
 
 router.get("/movies/:moviesId", function(req, res, next) {
-    Movies.findById(req.params.celebrityId)
+    Movie.findById(req.params.celebrityId)
         .then(function(moviesFromDB) {
             console.log('render movies', moviesFromDB)
             res.render("movies/show", {
