@@ -1,6 +1,6 @@
 require('dotenv').config({ path: require('path').resolve(__dirname, '../.env') })
 const mongoose = require("mongoose");
-const Celebrity = require("../models/celebrity");
+const Celebrity = require("../models/Celebrity.model");
 const MONGO_URI = process.env.MONGO_URI
 
 // open connection to database
