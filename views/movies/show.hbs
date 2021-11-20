@@ -2,10 +2,13 @@
 
 <ul>
     {{#each moviesId}}
-        <p>{{this.title}}</p>
-        <p>{{this.genre}}</p>
-        <p>{{this.plot}}</p>
-        <p>{{this.cast}}</p>
+    <p>{{this.title}}</p>
+    <p>{{this.plot}}</p>
+    <p>{{this.genre}}</p>
+    {{#each myMovie}}
+    <option value= "{{this._id}}">{{this.name}}</option>
+        {{/each}}
     {{/each}}
 
 </ul>
+
