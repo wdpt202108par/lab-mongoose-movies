@@ -46,6 +46,10 @@ router.get('/celebrities/:_id', (req, res, next) =>{
   
 })
 
+router.get("/movies", (req, res, next)=>{
+
+})
+
 
 router.post("celebrities", (req, res, next) => {
   let newCeleb = Celebrity({
@@ -68,7 +72,7 @@ router.get('/movies', (req, res, next) => {
   Movie.find()
   .then(allTheMoviesFromDB => {
     console.log('Retrieved celebritiers from DB:', allTheMoviesFromDB);
-    res.render('movies/index',{ celebrity: allTheMoviesFromDB });
+    res.render('movies/index',{ movies: allTheMoviesFromDB });
   
   })
 
@@ -78,3 +82,30 @@ router.get('/movies', (req, res, next) => {
     next(error);
   });
 });
+
+router.get('/movies/new', (req, res, next) => {
+  Celebrity.find()
+    .then( celebritiesFromDB => {
+      res.render('movies/new', {celebrities: celebritiesFromDB})
+    })
+
+})
+
+router.post('/movies/new', (req, res,) => {
+  let title = req.body.title;
+  let genre = req.body.genre;
+  let plot = req.body.plot;
+  let cast = req.body.cast;
+  Movie.create({title, genre, plot, cast})
+  .then(createdMovie => {
+    console.log('created movie', createdMovie);
+    res.redirect('/movies');
+  
+  })
+
+  .catch(error => {
+    console.log('Error while getting the movies from the DB:', error);
+  });
+});
+
+
