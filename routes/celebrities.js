@@ -62,7 +62,7 @@ router.post("/celebrities/:celebrityid", function (req, res, next) {
     { new: true }
   )
    .then(function (updatedCelebrity) {
-    res.redirect("/celebrities");
+      res.redirect("/celebrities");
   })
    .catch((err) => {
      console.log(err);
