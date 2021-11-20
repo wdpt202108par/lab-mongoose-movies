@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const Celebrity = require("../models/celebrity");
+const Movie = require("../models/Movie");
 
 /* GET home page */
 router.get("/", (req, res, next) => {
@@ -67,5 +68,12 @@ router.post("/celebrities/:id/delete", function (req, res, next) {
       next(err);
     });
 });
+
+/* GET Deleting celebrities page */
+//iteration 8
+router.get('/movies/new', (req, res, next)=>{
+  
+})
+
 
 module.exports = router;

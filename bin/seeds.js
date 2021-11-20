@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Celebrity = require('../models/celebrity');
+const Movie = require('../models/Movie');
 
 //connection for the mongoose && promises 
 mongoose.connect ('mongodb://localhost/lab-mongoose-movies')
@@ -27,14 +28,49 @@ const celebrities = [
         catchPhrase : "Halo"
     }
 ]
+// created the New movie models
+const movies = [
+    {
+        title: "Titanic",
+        genre: "Drama",
+        plot: "sad"
+    }
+]
+
+
+
+
 
 //created  the celebrityDB
 Celebrity.create(celebrities)
-    .then(function(celebrityDB){
+    .then(function(celebrityDB){ // [ {}, {}, {} ]
     console.log(`${celebrityDB.length} have been created 😃`);
-    mongoose.connection.close()
-})
+
+        // movies[0].cast = [celebrityDB[0]._id] // movies = { cast = [1234] }
+
+        movies.map( movie => movie.cast = [celebrityDB[0]._id])
+
+        Movie.create(movies)
+        .then(function(movieDB){
+        console.log(`${movieDB.length} have been created 😃`);
+        mongoose.connection.close()
+        })
+        .catch(err => {
+            console.log('Error! during the creation of the movie DB');
+            console.log('ERROR ===>', err);
+            next(err);
+        })
+    })
     .catch(err => {
-    console.log('Error! during the creation of the celebrityDB');
+    console.log('Error! during the creation of the celebrities DB');
+    console.log('ERROR ===>', err);
+    next(err);
 });
+
+
+
+
+
+
+
 
