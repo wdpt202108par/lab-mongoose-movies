@@ -72,8 +72,40 @@ router.post("/celebrities/:id/delete", function (req, res, next) {
 /* GET Deleting celebrities page */
 //iteration 8
 router.get('/movies/new', (req, res, next)=>{
-  
+  Movie.find()
+  .then(function (movieList){
+    res.render('movies/new', {myMovie : movieList});
+  })
+  .catch(function (err){
+    console.log(`Error! Movie new page not found 🥲`);
+    next (err);
+  });
+});
+
+router.post('/movies', function (req, res, next){
+  const {title, genre, plot, cast} = req.body;
+  // same as  Movie.create()
+  new Movie ({
+    title,
+    genre,
+    plot,
+    cast,
+  }).save()
+  .then(function (newMovie){
+  res.redirect('/movies');
+  })
+  .catch(err => {
+    console.log(`Error! during creation of movies 😱`);
+    next(err);
+  })
 })
+
+
+
+
+
+
+
 
 
 module.exports = router;

@@ -18,8 +18,12 @@
 
     <label>
         Cast:
-        <input type="text" name="plot" />
+        <select name= "celebrity" multiple>
+        {{#each myMovie}}
+        <option value= "{{this._id}}">{{this.title}}</option>
+        {{/each}}
+    </select>
     </label>
     
-    <button>Create</button>
+    <button>Create😎</button>
 </form>

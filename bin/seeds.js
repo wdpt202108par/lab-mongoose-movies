@@ -39,8 +39,6 @@ const movies = [
 
 
 
-
-
 //created  the celebrityDB
 Celebrity.create(celebrities)
     .then(function(celebrityDB){ // [ {}, {}, {} ]
