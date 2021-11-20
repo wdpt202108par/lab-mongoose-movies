@@ -31,14 +31,12 @@ router.get('/movies/new', function(req, res, next){
 
 router.post('/movies', function(req, res, next){
   const {title, genre, plot, cast} = req.body;
-
+  console.log('cast = ' , cast)
   Movie.create({title, genre, plot, cast})
     .then(function(newMovie){
       res.redirect('/movies/index')
     })
     .catch(err => next(err))
 })
-
-
 
 module.exports = router;

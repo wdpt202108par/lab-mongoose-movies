@@ -1,11 +1,12 @@
 const express = require('express');
+const Celebrity = require('../models/Celebrity.model');
 const router  = express.Router()
 const Movie = require('../models/Movie.model')
 
 // ITERATION 10 : Movie details
 router.get('/movies/:id', function(req, res, next){
     Movie.findById(req.params.id)
-        .populate('Movie')
+        .populate('celebrities')
         .then(function(movieDetails){
             res.render('movies/show', {movieDetails})
         })
