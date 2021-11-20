@@ -1,6 +1,6 @@
 <h2>Our Amazing Celebs</h2>
 
-{{#each celebritiesFromDb}}
+{{#each celebrities}}
   <h3><a href="/celebrities/{{_id}}">{{name}}</a></h3>
   <form method="POST" action="celebrities/{{_id}}/delete">
     <button>Delete</button>

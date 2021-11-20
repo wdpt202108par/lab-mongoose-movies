@@ -8,6 +8,6 @@ const celebritySchema = new mongoose.Schema(
   }
 )
 
-const Celebrity = mongoose.model("Celebrity", celebritySchema);
+const Celebrity = mongoose.model("celebrities", celebritySchema);
 
 module.exports = Celebrity;

@@ -1,6 +1,7 @@
+require('dotenv').config({ path: require('path').resolve(__dirname, '../.env') })
 const mongoose = require("mongoose");
 const Celebrity = require("../models/celebrity");
-const MONGO_URI = process.env.MONGODB_URI || 'mongodb://localhost/lab-mongoose-movies';
+const MONGO_URI = process.env.MONGO_URI
 
 // open connection to database
 mongoose.connect(MONGO_URI, {
@@ -37,3 +38,4 @@ Celebrity.create(celebrities)
     mongoose.connection.close();
   })
   .catch(err => console.log(err))
+
