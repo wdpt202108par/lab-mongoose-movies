@@ -1,6 +1,6 @@
 const express = require('express');
 const router  = express.Router();
-const Celebrity = require('../models/Celebrity.model')
+const Celebrity = require('../models/Celebrity.model.js')
 
 /* GET home page */
 router.get('/', (req, res, next) => {
@@ -24,6 +24,10 @@ router.get('/celebrities', (req, res, next) => {
   });
 });
 
+// creation celebs
+router.get("/celebrities/new", (req, res, netx) => {
+  res.render("celebrities/new", {});
+})
 
 router.get('/celebrities/:_id', (req, res, next) =>{
   Celebrity
@@ -41,11 +45,9 @@ router.get('/celebrities/:_id', (req, res, next) =>{
   
 })
 
-router.get("/celebrities/new", req, res, netx => {
-  res.render("/celebrities/new");
-})
 
-router.post("celebrities", req, res, next => {
+
+router.post("celebrities", (req, res, next) => {
   let newCeleb = Celebrity({
     name: req.body.name,
     occupation: req.body.occupation,
