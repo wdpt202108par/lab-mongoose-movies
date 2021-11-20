@@ -1,4 +1,4 @@
-<h2> Creating the Movies</h2>
+<h2> Adding the Movies</h2>
 
 <form action="/movies" method="POST">
     <label>
@@ -16,20 +16,11 @@
         <input type="text" name="plot" />
     </label>
 
-    <label>
-        Cast:
-        <select name= "celebrity" multiple>
-        {{#each myMovie}}
-        <option value= "{{this._id}}">{{this.title}}</option>
-        {{/each}}
-    </select>
-    </label>
-    
 <label>
-        Cast myCeleb:
+        Cast :
         <select name= "celebrity" multiple>
         {{#each myCeleb}}
-        <option value= "{{this.id}}">{{this.name}}</option>
+        <option value= "{{this._id}}">{{this.name}}</option>
         {{/each}}
     </select>
     </label>

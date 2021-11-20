@@ -4,8 +4,9 @@
     {{#each myCeleb}}
     <li>
         <p>{{this.name}}</p>
-        <a href="celebrities/{{this.id}}">Go to check the celebrities by ID</a>
-    
+        <form action="/celebrities/{{this.id}}" method="GET">
+            <button>Check celebrities by ID</button>
+        </form>
         <form action="/celebrities/{{this.id}}/delete" method="POST">
             <button>delete ID</button>
         </form>

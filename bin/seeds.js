@@ -18,6 +18,11 @@ const celebrities = [
         catchPhrase : "Top gun"
     },
     {
+        name: "Kardelen",
+        occupation : "developpeur",
+        catchPhrase : "iron"
+    },
+    {
         name: "Oprah",
         occupation : "comedian",
         catchPhrase : "Hello"
