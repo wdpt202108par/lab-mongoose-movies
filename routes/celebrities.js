@@ -59,16 +59,16 @@ router.get("/celebrities/:celebrityId", function(req, res, next) {
 });
 
 
-router.post("/celebrities/:id/delete", function(req, res, next) {
+router.post("/celebrities/:celebrityId/delete", function(req, res, next) {
     console.log("req.body=", req.body);
 
     Celebrity.findByIdAndRemove(req.params.celebrityId)
-        .then(function(createdCelebrity) {
-            // celeb a été créé
+        .then(function(deletedCelebrity) {
+            // celeb a été supprimée
             res.redirect("/celebrities"); // reponse
         })
         .catch((err) => {
-            console.log(err);
+            console.log("celeb pas crée", err);
             next(err)
                 //res.redirect("/celebrities/new");;
 
