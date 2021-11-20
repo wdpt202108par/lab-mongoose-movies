@@ -30,22 +30,24 @@ router.get("/movies/new", function(req, res, next) {
         });
 });
 
-router.post("/movies", function(req, res, next) {
+router.post("/movies/new", function(req, res, next) {
     console.log("req.body=", req.body); // {title: "", plot: "", cast: [] }
 
-    Movies.create({
-            title: req.body.title, // "tata"
-            genre: req.body.genre, // ""
-            plot: req.body.plot, // ""
-            cast: req.body.cast,
-        })
-        .then(function(createdMovie) {
+    Movie.create({
+        title: req.body.title, // "tata"
+        genre: req.body.genre, // ""
+        plot: req.body.plot, // ""
+        cast: req.body.cast,
+    })
+
+    .then(function(createdMovie) {
             console.log(createdMovie);
             // livre a été créé
             res.redirect("/movies"); // reponse
         })
         .catch((err) => {
             console.log("erreur création du film", err);
+            res.redirect("/movies/new"); // reponse
         });
 });
 
