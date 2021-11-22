@@ -6,7 +6,9 @@ const Movie = require('../models/Movie.model')
 // ITERATION 10 : Movie details
 router.get('/movies/:id', function(req, res, next){
     Movie.findById(req.params.id)
-        .populate('celebrities')
+        .populate({
+            path: 'cast',
+            select: 'name -_id'})
         .then(function(movieDetails){
             res.render('movies/show', {movieDetails})
         })

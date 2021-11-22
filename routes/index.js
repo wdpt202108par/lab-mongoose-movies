@@ -11,7 +11,7 @@ router.get('/', (req, res, next) => {
 });
 
 // ITERATION 9 : Listing our movies
-router.get('/movies/index', function(req, res, next){
+router.get('/movies', function(req, res, next){
   Movie.find({})
     .then(function(moviesFromDb){
       res.render('movies/index', {moviesFromDb})
@@ -34,7 +34,7 @@ router.post('/movies', function(req, res, next){
   console.log('cast = ' , cast)
   Movie.create({title, genre, plot, cast})
     .then(function(newMovie){
-      res.redirect('/movies/index')
+      res.redirect('/movies')
     })
     .catch(err => next(err))
 })
