@@ -15,4 +15,16 @@ router.get('/movies/:id', function(req, res, next){
         .catch (err => next(err))
 })
 
+// ITERATION 11 : Deleting movies
+router.post('/movies/:id/delete', function(req, res, next){
+    Movie.findByIdAndRemove(req.params.id)
+      .then((function(deletedMovie){
+        res.redirect('/movies')
+      }))
+      .catch(function (err) {
+        console.log(err);
+        next(err);
+      });
+})
+
 module.exports = router
