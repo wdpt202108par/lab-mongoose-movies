@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
-
 const Celebrity = require('../models/Celebrity.model')
+
 
 mongoose.connect("mongodb://localhost/lab-mongoose-movies")
   .then(function () {
@@ -27,6 +27,7 @@ const celebrities = [{
   catchPhrase:"Oops I did it again",
   },
 ]
+
 
 Celebrity.create(celebrities)
   .then(function (celebritiesFromDb) {

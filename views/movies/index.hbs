@@ -1,6 +1,6 @@
+<a href="/movies/new">Add a movie</a>
 
 {{#each moviesFromDb}}
   <a href="/movies/{{id}}">{{this.title}}</a>
+  <a href="/movies/{{id}}/edit">Update</a>
 {{/each}}
-
-<a href="/movies/new">Add a movie</a>
