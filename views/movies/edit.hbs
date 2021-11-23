@@ -1,4 +1,4 @@
-<h2>EDIT</h2>
+<h2>Edit {{movieToUpdate.title}}</h2>
 
 <form action="/movies/{{movieToUpdate.id}}" method="POST">
   <label>
@@ -11,14 +11,14 @@
   </label>
   <label>
       Plot:
-      <textarea type="textarea" name="plot">
+      <textarea name="plot">
         {{movieToUpdate.plot}}
       </textarea>
   </label>
   <label>
       Cast:
       <select name="cast" multiple>
-        {{#each celebrities}}
+        {{#each celebritiesFromDb}}
           <option value="{{id}}" {{#if selected}}selected="selected"{{/if}}>{{name}}</option>
         {{/each}}    
       </select>

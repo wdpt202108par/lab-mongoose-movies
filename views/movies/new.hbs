@@ -1,3 +1,5 @@
+<h2>Add a movie</h2>
+
 <form action="/movies" method="POST">
   <label>
       Title
@@ -11,13 +13,13 @@
 
   <label>
       Plot
-        <textarea type="textarea" name="plot"></textarea>
+        <textarea name="plot"></textarea>
   </label>
 
   <label>
       Cast
       <select name="cast" multiple>
-          {{#each celebritiesFromDb}}
+          {{#each celebrities}}
             <option value="{{id}}">{{name}}</option>
           {{/each}}
       </select>
