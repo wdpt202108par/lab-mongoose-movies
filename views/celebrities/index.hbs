@@ -1,5 +1,11 @@
 <h2>Celebrities</h2>
 {{#each celebrities}}
     <p>{{name}} said : {{catchPhrase}} </p> 
-    <a href="/celebrities/{{_id}}">Details</a>
+    <p><a href="/celebrities/{{_id}}">Details</a></p>
 {{/each}}
+
+<hr>
+
+<h6>
+    <a href="/celebrities/new">Create new celebrity</a>
+</h6>

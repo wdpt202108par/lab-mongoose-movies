@@ -1,0 +1,18 @@
+<h1> Create a new celebrity</h1>
+
+<form action="/celebrities" method="POST">
+    <label>Name: </label>
+    <input name="name">
+
+    <label>Occupation: </label>
+    <input name="occupation">
+
+    <label for="">Catch Phrase:</label>
+    <input name="catchPhrase">
+
+    <button>Create</button>
+</form>
+
+{{#if message}}
+    <p>{{message}} </p>
+{{/if}}
