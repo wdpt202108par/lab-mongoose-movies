@@ -1,10 +1,7 @@
 const mongoose = require('mongoose')
-const Celebrity = require('../models/Celebrity.model.js')
+const Celebrity = require('../models/celebrity.js')
 
-
-const DB_NAME = 'lab-mongoose-movies'
-
-mongoose.connect(`mongodb://localhost/${DB_NAME}`, {
+mongoose.connect(`mongodb://localhost/${process.env.DBNAME}`, {
     useCreateIndex: true,
     useNewUrlParser: true,
     useUnifiedTopology: true
