@@ -1,7 +1,13 @@
 <h2>Celebrities</h2>
 {{#each celebrities}}
-    <p>{{name}} said : {{catchPhrase}} </p> 
-    <p><a href="/celebrities/{{_id}}">Details</a></p>
+    <p>{{name}} said : {{catchPhrase}} </p>
+    <div class="btn-ctn">
+        <button><a href="/celebrities/{{_id}}">Details</a></button>
+        <form action="/celebrities/{{id}}/delete" method="POST">
+            <button>Delete</button>
+        </form>
+    </div>
+    
 {{/each}}
 
 <hr>
