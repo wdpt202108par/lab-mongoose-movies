@@ -21,7 +21,11 @@ router.post('/celebrities', (req, res, next) => {
     // const occupation = req.body.occupation
     // const catchPhrase = req.body.catchPhrase 
 
-    const { name, occupation, catchPhrase } = req.body
+    const {
+        name,
+        occupation,
+        catchPhrase
+    } = req.body
 
     // ici on peut aussi créer des condition pour le pas accepter des champs vide
 
@@ -56,7 +60,23 @@ router.get('/celebrities/:id', (req, res, next) => {
         .then((chosenCelebrity) => {
             res.render('celebrities/show', chosenCelebrity)
         })
-        .catch(err => next(err))
+        .catch(err => {
+            console.log(`Error during retrieving celebrity id: ${req.params.id}. Error message: ${err}`)
+            next(err)
+        })
+})
+
+
+router.post('/celebrities/:id/delete', (req, res, next) => {
+    Celebrity.findByIdAndRemove(req.params.id)
+        .then(() => {
+            console.log(`Celebrity with id: ${req.params.id} deleted.`)
+            res.redirect('/celebrities')
+        })
+        .catch(err => {
+            console.log(`Error during deletion: ${err}`)
+            next(err)
+        })
 })
 
 module.exports = router;
