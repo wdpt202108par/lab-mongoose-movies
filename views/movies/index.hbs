@@ -1,0 +1,18 @@
+<h2>Movies</h2>
+<ul>
+    {{#each movies}}
+    <li>
+        <p>Title: {{title}}</p>
+        <div class="btn-ctn">
+            <button> <a href="/movies/{{id}}">Details</a> </button>
+        </div>
+        <hr>
+    </li>
+    {{/each}}
+
+</ul>
+
+
+<h6>
+    <a href="/movies/new">Create new movie</a>
+</h6>

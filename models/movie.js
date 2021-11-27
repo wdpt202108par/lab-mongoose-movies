@@ -10,6 +10,9 @@ const movieSchema = new Schema({
   cast: [ { type : Schema.Types.ObjectId, ref: 'Celebrity' } ]
 });
 
+// { type: String,
+//  required: [true, 'title field required']
+// }
 const Movie = mongoose.model('Movie', movieSchema);
 
 module.exports = Movie;

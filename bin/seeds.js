@@ -58,22 +58,22 @@ Celebrity.create(celebrities)
 
         console.log(`${createdCelebrities.length} celebrities have been created`)
 
-        // // select a celebrity among those inserted in the db
-        // const randomCelebrityIdx = Math.floor(Math.random() * movies.length);
+        // select a celebrity among those inserted in the db
+        const randomCelebrityIdx = Math.floor(Math.random() * movies.length);
 
-        // // insert the randomly chosen celebrity id in the cast field of a movie
-        // movies.map(movie => movie.cast.push(createdCelebrities[randomCelebrityIdx]._id))
+        // insert the randomly chosen celebrity id in the cast field of a movie
+        movies.map(movie => movie.cast.push(createdCelebrities[randomCelebrityIdx]._id))
 
-        // Movie.create(movies)
-        //     .then(createdMovies => {
-        //         console.log(`${createdMovies.length} movies have been created`)
-        //         mongoose.connection.close()
-        //     })
-        //     .catch(err => {
-        //         console.log(`Error while movie data insertion. ERROR : ${err}`)
-        //     })
+        Movie.create(movies)
+            .then(createdMovies => {
+                console.log(`${createdMovies.length} movies have been created`)
+                mongoose.connection.close()
+            })
+            .catch(err => {
+                console.log(`Error while movie data insertion. ERROR : ${err}`)
+            })
 
-        mongoose.connection.close()
+        //mongoose.connection.close()
     })
     .catch(err => {
         console.log(`Error while celebrity data insertion. ERROR : ${err}`)
